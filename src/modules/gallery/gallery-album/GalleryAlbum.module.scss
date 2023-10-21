@@ -1,0 +1,195 @@
+@import "@styles/scss/partials/mixins";
+@import "@styles/scss/partials/variables";
+
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: var(--spacing-x-large);
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+
+    img {
+        cursor: pointer;
+        border: 1px solid var(--gray-800);
+        transition: all 0.3s ease-in-out 0s;
+
+        &:hover {
+            border-color: var(--gray-500);
+        }
+    }
+
+    &__title {
+        flex: 0 0 calc(33.33333% - var(--spacing-large));
+        max-width: calc(33.33333% - var(--spacing-large));
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 4px solid var(--gray-600);
+        border-bottom: 4px solid var(--gray-600);
+        padding: var(--spacing-xxx-large) 0;
+
+        p {
+            font-size: 40px;
+            color: var(--gray-200);
+            text-transform: uppercase;
+            width: auto;
+            display: flex;
+            gap: var(--spacing-large);
+            align-items: center;
+            padding-right: var(--spacing-x-large);
+            background-color: black;
+            position: relative;
+            z-index: 1;
+        }
+
+        span {
+            color: var(--gray-600);
+            font-size: 32px;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        flex: 0 0 calc(33.33333% - var(--spacing-large));
+        max-width: calc(33.33333% - var(--spacing-large));
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &__info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+
+            &__icon {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    width: 40px;
+                    height: 40px;
+                    path {
+                        fill: white;
+                        transition: all 0.3s ease-in-out 0s;
+                    }
+                }
+            }
+            &:hover {
+                path {
+                    fill: var(--active-link-color);
+                }
+            }
+            &__label {
+                font-size: 15px;
+                color: white;
+                padding: var(--spacing-large);
+                background-color: #00000078;
+                svg {
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+
+                    path {
+                        fill: white;
+                        transition: all 0.3s ease-in-out 0s;
+                    }
+                }
+
+                &:hover {
+                    path {
+                        fill: var(--active-link-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include down(1400px) {
+    .root {
+        max-width: 800px;
+
+        &__image,
+        &__title {
+            flex: 0 0 calc(50% - var(--spacing-large));
+            max-width: calc(50% - var(--spacing-large));
+
+            p {
+                font-size: 28px;
+            }
+        }
+
+        &__image {
+            &__info {
+                &__label {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+}
+
+@include down(1400px) {
+    .root {
+        max-width: 600px;
+    }
+}
+
+@include xs {
+    .root {
+        max-width: 100%;
+
+        &__title {
+            flex: 0 0 100%;
+            max-width: 100%;
+            border-bottom: 0;
+            padding-bottom: 0;
+            gap: var(--spacing-large);
+
+            p {
+                font-size: 24px;
+            }
+
+            span {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+@include down(500px) {
+    .root {
+        &__image {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        img {
+            cursor: unset;
+        }
+
+        &__title {
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+@import "@styles/scss/partials/mixins";
+@import "@styles/scss/partials/variables";
+
+.root {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xx-large);
+    align-items: flex-end;
+
+    img {
+        border: 1px solid var(--gray-800);
+    }
+
+    p {
+        color: var(--gray-200);
+        text-align: left;
+        max-width: 450px;
+        font-size: 20px;
+        line-height: 28px;
+        border-bottom: 4px solid var(--gray-600);
+        padding-bottom: var(--spacing-normal);
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+.root:global(.dir_rtl) {
+    direction: rtl;
+}
+
+@include down(1400px) {
+    .root {
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+
+        img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        p {
+            font-size: 16px;
+            max-width: 390px;
+        }
+    }
+}
+
+@include down(1024px) {
+    .root {
+        max-width: 600px;
+    }
+}
+
+@include xs {
+    .root {
+        p {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+}

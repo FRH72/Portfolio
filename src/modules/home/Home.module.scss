@@ -1,0 +1,135 @@
+@import "@styles/scss/partials/mixins";
+@import "@styles/scss/partials/variables";
+
+.root {
+    position: relative;
+    background-color: black;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    &__info {
+        position: absolute;
+        top: 18vw;
+        right: 58%;
+        max-width: clamp(400px, 25vw, 800px);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-x-large);
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 500;
+            color: white;
+            font-size: clamp(32px, 2.3vw, 70px);
+        }
+
+        p {
+            color: var(--gray-200);
+            font-size: clamp(18px, 0.54vw, 32px);
+            max-width: clamp(300px, 22vw, 650px);
+            line-height: clamp(25px, 1.5vw, 40px);
+        }
+
+        button {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out 0s;
+
+            &:hover {
+                background-color: var(--active-link-color);
+                color: black;
+            }
+        }
+    }
+}
+
+@include down(1400px) {
+    .root {
+        &__info {
+            top: 6vw;
+            right: unset;
+            left: 50px;
+        }
+    }
+}
+
+@include down(1300px) {
+    .root {
+        &__info {
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@include down(1024px) {
+    .root {
+        &__info {
+            background-color: #00000094;
+            bottom: 0;
+            top: unset;
+            left: 0;
+            right: 0;
+            max-width: unset;
+            display: flex;
+            justify-content: center;
+            padding: var(--spacing-x-large);
+
+            button {
+                display: none;
+            }
+
+            h1 {
+                max-width: 600px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            p {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+@include xs {
+    .root {
+        display: flex;
+        flex-direction: column;
+
+        &__info {
+            background-color: var(--gray-900);
+            position: static;
+
+            h1 {
+                max-width: unset;
+                width: 100%;
+                font-size: 24px;
+            }
+
+            p {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+@include down(500px) {
+    .root {
+        &__info {
+            h1 {
+                font-size: 18px;
+                line-height: 25px;
+            }
+        }
+    }
+}

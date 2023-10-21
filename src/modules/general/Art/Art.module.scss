@@ -1,0 +1,130 @@
+@import "@styles/scss/partials/mixins";
+@import "@styles/scss/partials/variables";
+
+.root {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-x-large);
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--gray-800);
+    }
+
+    &__smallImage {
+        flex: 1;
+    }
+
+    &__largeImage {
+        flex: 2;
+    }
+
+    &__info {
+        flex: 2;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-normal);
+        padding: var(--spacing-xxx-large) 0;
+        border-top: 4px solid var(--gray-600);
+        border-bottom: 4px solid var(--gray-600);
+        direction: ltr;
+
+        &__label {
+            color: var(--gray-400);
+            font-size: 20px;
+            line-height: 26px;
+            text-transform: uppercase;
+        }
+
+        &__name {
+            color: white;
+            text-transform: uppercase;
+            font-size: 40px;
+        }
+
+        &__year {
+            color: var(--gray-600);
+            font-size: 32px;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
+
+.root:global(.dir_rtl) {
+    direction: rtl;
+}
+
+@include down(1400px) {
+    .root {
+        flex-wrap: wrap;
+        max-width: 800px;
+        margin: 0 auto;
+
+        &__info {
+            flex: 0 0 100%;
+            max-width: 100%;
+
+            &__name {
+                font-size: 35px;
+            }
+        }
+        &__smallImage {
+            flex: 0 0 calc(30% - var(--spacing-normal));
+            max-width: calc(30% - var(--spacing-normal));
+        }
+
+        &__largeImage {
+            flex: 0 0 calc(70% - var(--spacing-normal));
+            max-width: calc(70% - var(--spacing-normal));
+        }
+    }
+}
+
+@include down(1024px) {
+    .root {
+        max-width: 600px;
+
+        &__info {
+            border-bottom: none;
+            padding-bottom: 0;
+            &__label {
+                font-size: 16px;
+            }
+            &__name {
+                font-size: 30px;
+            }
+
+            &__year {
+                font-size: 25px;
+                display: flex;
+            }
+        }
+    }
+}
+
+@include xs {
+    .root {
+        &__info {
+            &__name {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+@include down(500px) {
+    .root {
+        &__info {
+            &__label {
+                font-size: 13px;
+            }
+            &__name {
+                font-size: 18px;
+            }
+        }
+    }
+}
